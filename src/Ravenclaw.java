@@ -13,6 +13,38 @@ public class Ravenclaw extends Hogwarts {
         this.creativity = creativity;
     }
 
+    @Override
+    public String toString() {
+        return "модификаторы школы Когтевран: " +
+                "ум-" + intellect +
+                ", мудрость-" + wisdom +
+                ", остроумие-" + wittiness +
+                ", творчество-" + creativity;
+    }
+    public static void findAndPrintBestStudent(Ravenclaw[] students) {
+        int firstNotNullElement = 0;
+        int studentMaxSumSkill = 0;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
+                studentMaxSumSkill = (students[i].getIntellect() + students[i].getWittiness() + students[i].getWisdom()+students[i].getCreativity());
+                firstNotNullElement = i;
+                break;
+            } else {
+                System.out.println("В Когтевран еще никого не распределили, обратитесь к шляпе");
+            }
+        }
+        for (int i = firstNotNullElement; i < students.length; i++) {
+            if (students[i] != null && (studentMaxSumSkill < (students[i].getIntellect() + students[i].getWittiness() + students[i].getWisdom()+students[i].getCreativity()))) {
+                studentMaxSumSkill = (students[i].getIntellect() + students[i].getWittiness() + students[i].getWisdom()+students[i].getCreativity());
+            }
+        }
+        for (int i = firstNotNullElement; i < students.length; i++) {
+            if (students[i] != null && (students[i].getIntellect() + students[i].getWittiness() + students[i].getWisdom()+students[i].getCreativity()) == studentMaxSumSkill) {
+                System.out.println(students[i].getStudentFullName() + " лучший Когтевранец, среди остальных " + (numOfStudentsInFaculty(students) - 1) + " студента/ов");
+            }
+        }
+    }
+
     public int getIntellect() {
         return intellect;
     }

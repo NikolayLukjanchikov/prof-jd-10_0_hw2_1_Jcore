@@ -15,6 +15,16 @@ public class Slytherin extends Hogwarts{
         this.lustForPower = lustForPower;
     }
 
+    @Override
+    public String toString() {
+        return "модификаторы школы Слизерин: " +
+                "хитрость-" + cunning +
+                ", решительность-" + determination +
+                ", амбициозность-" + ambition +
+                ", находчивость-" + resourcefulness +
+                ", жажда власти-" + lustForPower;
+    }
+
     public int getCunning() {
         return cunning;
     }

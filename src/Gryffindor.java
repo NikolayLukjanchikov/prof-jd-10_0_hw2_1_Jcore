@@ -4,11 +4,45 @@ public class Gryffindor extends Hogwarts {
     private int courage;    //храбрость
 
     public Gryffindor(String studentFullName, int spellPower, int transgressionDistance, int nobility, int honor, int courage) {
-        super( studentFullName, spellPower, transgressionDistance);
+        super(studentFullName, spellPower, transgressionDistance);
         this.nobility = nobility;
         this.honor = honor;
         this.courage = courage;
     }
+
+
+    @Override
+    public String toString() {
+        return "модификаторы школы Гриффиндор: " +
+                "благородство-" + nobility +
+                ", честь-" + honor +
+                ", храбрость-" + courage;
+    }
+
+    public static void findAndPrintBestStudent(Gryffindor[] students) {
+        int firstNotNullElement = 0;
+        int studentMaxSumSkill = 0;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
+                studentMaxSumSkill = (students[i].getNobility() + students[i].getHonor() + students[i].getCourage());
+                firstNotNullElement = i;
+                break;
+            } else {
+                System.out.println("В Грифиндор еще никого не распределили, обратитесь к шляпе");
+            }
+        }
+        for (int i = firstNotNullElement; i < students.length; i++) {
+            if (students[i] != null && (studentMaxSumSkill < (students[i].getNobility() + students[i].getHonor() + students[i].getCourage()))) {
+                studentMaxSumSkill = (students[i].getNobility() + students[i].getHonor() + students[i].getCourage());
+            }
+        }
+        for (int i = firstNotNullElement; i < students.length; i++) {
+            if (students[i] != null && ((students[i].getNobility() + students[i].getHonor() + students[i].getCourage()) == studentMaxSumSkill)) {
+                System.out.println(students[i].getStudentFullName() + " лучший Гриффиндорец, среди остальных " + (numOfStudentsInFaculty(students) - 1) + " студента/ов");
+            }
+        }
+    }
+
 
     public int getNobility() {
         return nobility;
