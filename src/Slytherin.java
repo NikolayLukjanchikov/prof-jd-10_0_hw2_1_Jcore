@@ -1,4 +1,4 @@
-public class Slytherin extends Hogwarts{
+public class Slytherin extends Hogwarts {
 
     private int cunning;        //хитрость
     private int determination;  //решительность
@@ -24,6 +24,20 @@ public class Slytherin extends Hogwarts{
                 ", находчивость-" + resourcefulness +
                 ", жажда власти-" + lustForPower;
     }
+
+    public static void compareTwoStudentsAtFacultyAndPrintBest(Slytherin student1, Slytherin student2) {
+        if ((student1.getCunning() + student1.getDetermination() + student1.getAmbition() + student1.getResourcefulness() + student1.getLustForPower())
+                >
+                (student2.getCunning()) + student2.getDetermination() + student2.getAmbition() + student2.getResourcefulness() + student2.getLustForPower()) {
+            System.out.println(student1.getStudentFullName() + " лучший Слизеринец, чем " + student2.getStudentFullName());
+        } else if ((student1.getCunning() + student1.getDetermination() + student1.getAmbition() + student1.getResourcefulness() + student1.getLustForPower())
+                <
+                (student2.getCunning()) + student2.getDetermination() + student2.getAmbition() + student2.getResourcefulness() + student2.getLustForPower()) {
+            System.out.println(student2.getStudentFullName() + " лучший Слизеринец, чем " + student1.getStudentFullName());
+        } else
+            System.out.println(student2.getStudentFullName() + " и " + student1.getStudentFullName() + " два сапога пара :-)");
+    }
+
 
     public int getCunning() {
         return cunning;
